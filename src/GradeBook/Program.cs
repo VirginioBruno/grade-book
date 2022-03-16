@@ -1,10 +1,32 @@
 ﻿using GradeBook;
 
 var book = new Book("Bruno's Grade Book");
-book.AddGrades(6, 7.5, 4.5, 5);
+
+while(true) 
+{
+    Console.WriteLine("Enter a grade or 'q' to exit");
+    var input = Console.ReadLine();
+
+    if(input == "q")
+        break;
+
+    try
+    {
+        var grade = 0.0;
+        if(double.TryParse(input, out grade))
+            book.AddGrade(grade);
+        else
+            throw new ArgumentException("The input must be a number between 0 and 10");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
+}
 
 var statistics = book.GetStatistics();
 
 Console.WriteLine($"The lower grade is {statistics.Lower}");
 Console.WriteLine($"The higher grade is {statistics.Higher}");
 Console.WriteLine($"The average grade is {statistics.Average}");
+Console.WriteLine($"The letter is {statistics.Letter}");
