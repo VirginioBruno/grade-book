@@ -9,7 +9,9 @@ public class BookTests
     {
         // arrange
         var book = new Book("");
-        book.AddGrades(4.5, 6.8, 9.0);
+        book.AddGrade(4.5);
+        book.AddGrade(6.8);
+        book.AddGrade(9.0);
 
         // act
         var result = book.GetStatistics();

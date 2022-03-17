@@ -4,6 +4,21 @@ namespace GradeBook.Tests;
 
 public class TypeTests
 {
+    public delegate string WriteLogDelegate(string log);
+
+    private int counter = 0;
+
+    [Fact]
+    public void WriteLogUsingDelegate() 
+    {
+        WriteLogDelegate writeLog = ReturnMessage;
+        writeLog += ReturnMessage;
+        writeLog += IncrementCounter;
+
+        var result = writeLog("Hello!");
+
+        Assert.Equal("hello!", result);
+    }
 
     [Fact]
     public void ValueTypesAlsoPassByValue() 
@@ -72,6 +87,18 @@ public class TypeTests
     Book GetBook(string name) 
     {
         return new Book(name);
+    }
+
+    string ReturnMessage(string message) 
+    {
+        counter++;
+        return message;
+    }
+
+    string IncrementCounter(string message) 
+    {
+        counter++;
+        return message.ToLower();
     }
 
     void SetName(Book book, string name)
