@@ -1,6 +1,7 @@
 ﻿using GradeBook;
 
 var book = new Book("Bruno's Grade Book");
+book.GradeAdded += OnGradeAdded;
 
 while(true) 
 {
@@ -30,3 +31,8 @@ Console.WriteLine($"The lower grade is {statistics.Lower}");
 Console.WriteLine($"The higher grade is {statistics.Higher}");
 Console.WriteLine($"The average grade is {statistics.Average}");
 Console.WriteLine($"The letter is {statistics.Letter}");
+
+static void OnGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Grade added to the book");
+}

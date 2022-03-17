@@ -11,6 +11,8 @@ public class Book
 
     public string Name { get; set; }
 
+    public event GradeAddedDelegate GradeAdded;
+
     public void AddGrade(char grade)
     {
         var number = 0.0;
@@ -42,6 +44,11 @@ public class Book
             throw new ArgumentException($"The {nameof(grade)} {grade} is invalid.");
 
         Grades.Add(grade);
+
+        if (GradeAdded != null)
+        {
+            GradeAdded(this, new EventArgs());
+        }
     }
 
     public Statistics GetStatistics()
