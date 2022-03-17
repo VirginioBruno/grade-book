@@ -1,7 +1,7 @@
 namespace GradeBook;
-public class Book
+public class Book : NamedObject
 {
-    public Book(string name)
+    public Book(string name) : base(name)
     {
         Grades = new List<double>();
         Name = name;
@@ -9,9 +9,7 @@ public class Book
 
     public List<double> Grades { get; set; }
 
-    public string Name { get; set; }
-
-    public event GradeAddedDelegate GradeAdded;
+    public event GradeAddedDelegate? GradeAdded;
 
     public void AddGrade(char grade)
     {
