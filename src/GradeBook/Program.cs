@@ -7,11 +7,6 @@ var statistics = book.GetStatistics();
 
 DisplayStats(statistics);
 
-static void OnGradeAdded(object sender, EventArgs args)
-{
-    Console.WriteLine("Grade added to the book");
-}
-
 static void EnterGrades(IBook book)
 {
     while (true)
@@ -49,7 +44,8 @@ static IBook CreateBook()
     else
         book = new InMemoryBook(name);
 
-    book.GradeAdded += OnGradeAdded;
+    book.GradeAdded += (object sender, EventArgs args) => Console.WriteLine("Grade added to the book");
+    
     return book;
 }
 
@@ -84,7 +80,7 @@ static string GetBookName()
 
     if (string.IsNullOrEmpty(name))
     {
-        var genericName = "Book Name";
+        var genericName = $"Book_{Guid.NewGuid()}";
         Console.WriteLine($"Book name set to {genericName}");
         name = genericName;
     }

@@ -2,9 +2,7 @@ namespace GradeBook;
 
 public class DiskBook : Book
 {
-    public DiskBook(string name) : base(name)
-    {
-    }
+    public DiskBook(string name) : base(name) { }
 
     public override event GradeAddedDelegate? GradeAdded;
 
