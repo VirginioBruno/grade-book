@@ -84,9 +84,9 @@ public class TypeTests
         Assert.Equal("Book", book.Name);
     }
 
-    Book GetBook(string name) 
+    InMemoryBook GetBook(string name) 
     {
-        return new Book(name);
+        return new InMemoryBook(name);
     }
 
     string ReturnMessage(string message) 
@@ -101,19 +101,19 @@ public class TypeTests
         return message.ToLower();
     }
 
-    void SetName(Book book, string name)
+    void SetName(InMemoryBook book, string name)
     {
         book.Name = name;
     }
 
-    void GetBookSetName(Book book, string name)
+    void GetBookSetName(InMemoryBook book, string name)
     {
-        book = new Book(name);
+        book = new InMemoryBook(name);
     }
 
-    void GetBookSetName(out Book book, string name)
+    void GetBookSetName(out InMemoryBook book, string name)
     {
-        book = new Book(name);
+        book = new InMemoryBook(name);
     }
 
     void SetInt(out int x) 

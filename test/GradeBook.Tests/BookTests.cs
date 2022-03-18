@@ -8,7 +8,7 @@ public class BookTests
     public void ShouldCalculateStatistics()
     {
         // arrange
-        var book = new Book("");
+        var book = new InMemoryBook("");
         book.AddGrade(4.5);
         book.AddGrade(6.8);
         book.AddGrade(9.0);
